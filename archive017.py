@@ -1,5 +1,16 @@
+############################################################
+############################################################
+# NAME:         NUMBER LETTER COUNTS
+# AUTHOR:       SCOTT BAILEY
+# DESCRIPTION:  FOR A GIVEN RANGE OF INTEGERS, THIS CONVERTS
+#               EACH INTEGER TO SPELLED-OUT TEXT AND 
+#               CALCULATES THE NUMBER OF LETTERS FOR THE
+#               ENTIRE RANGE. THIS DOES NOT INCLUDE HYPHENS
+#               OR BLANK SPACES.
+############################################################
+############################################################
 
-
+# Returns the spelled-out number from a given integer
 def spell_number(n: int):
     num_dict = {1: 'one',
             2: 'two',
@@ -60,4 +71,18 @@ def spell_number(n: int):
                 spell = num_dict[huns_plc] + ' hundred and ' + num_dict[tens_plc*10] + '-' + num_dict[ones_plc]
     return spell
 
-def spelled_number_letter_count(bottom_limit, top_limit)
+
+def spelled_number_letter_count(bottom_limit, top_limit):
+    word_concat = ''
+    for i in range(bottom_limit, top_limit + 1):
+        spelled_number = spell_number(i)
+        word_concat += spelled_number.replace('-', '').replace(' ', '')
+    return len(word_concat)
+
+
+bottom = 1
+top = 1000
+total_letters = spelled_number_letter_count(bottom, top)
+print(f'The spelled numbers from {bottom} to {top} contain a total of {total_letters:,} letters.')
+#print(spelled_number_letter_count(bottom,top))
+

@@ -4,20 +4,17 @@
 # AUTHOR:       SCOTT BAILEY
 # DESCRIPTION:  RETURNS THE SUM OF OF EVEN FIBONACCI
 #               NUMBERS THAT ARE BELOW A SPECIFIED
-#               LIMIT
+#               LIMIT.
 ########################################################
 ########################################################
 
-### INCOMPLETE ###
-
-def sum_of_even_fibs(limit):
-    fibs = [1, 2]
-    i = 0
-    while i < limit - 2:
-        fibs.append(fibs[i] + fibs[i+1])
-        i += 1
-    even_fibs = [j for j in fibs if j%2 == 0]
-    return fibs
-
-lim = 10
-print(sum_of_even_fibs(lim))
+def even_fibonacci_sum(limit):
+    seq = [1, 2]
+    while seq[-1] + seq[-2] <= limit:
+        seq.append(seq[-1] + seq[-2])
+    even_fibs = [i for i in seq if i%2 == 0]
+    return sum(even_fibs)
+    
+lim = 4000000
+tot = even_fibonacci_sum(lim)
+print(f'The sum of the even terms below {lim:,} in a Fibonacci sequence is {tot:,}.')
